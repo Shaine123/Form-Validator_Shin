@@ -20,7 +20,7 @@ body {
   width: 90%;
   max-width: 400px;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
@@ -56,6 +56,14 @@ form .form-group input {
   border: 2px #cbcbcb8c solid;
   border-radius: 5px;
   transition: all ease 0.3;
+}
+
+form .form-group.error input {
+  border: 2px #ed2626 solid;
+}
+
+form .form-group.success input {
+  border: 2px #35d24f solid;
 }
 
 form .form-group input:focus {
