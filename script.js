@@ -15,6 +15,17 @@ function submitForm(e) {
     password,
     confirmPassword,
   ]);
+
+  if (validateForm) {
+    if (
+      checkInputLength(username, 3, 15) &&
+      checkIsEmailValid(email) &&
+      checkInputLength(password, 8, 15) &&
+      checkPasswordMatch(password, confirmPassword)
+    ) {
+      alert("Form Submitted");
+    }
+  }
 }
 
 function checkFormInput(inputArray) {
@@ -22,7 +33,10 @@ function checkFormInput(inputArray) {
 
   inputArray.forEach((input) => {
     if (input.value.trim() == "") {
-      showError(input, `${formFormatter(input)} is empty`);
+      showError(input, `${formFormatter(input)} is required`);
+      isValid = false;
+    } else {
+      showSuccess(input);
     }
   });
 
@@ -30,8 +44,57 @@ function checkFormInput(inputArray) {
 }
 
 function showError(input, message) {
-  console.log(input);
-  console.log(message);
+  const formGroup = input.parentElement;
+  formGroup.classList.remove("success");
+  formGroup.classList.add("form-group", "error");
+
+  const small = formGroup.children[2];
+  small.innerText = message;
+}
+
+function showSuccess(input) {
+  const formGroup = input.parentElement;
+  formGroup.classList.remove("error");
+  formGroup.classList.add("form-group", "success");
+
+  const small = formGroup.children[2];
+  small.innerText = "";
+}
+
+function checkInputLength(input, min, max) {
+  if (input.value.length < min) {
+    showError(input, `${formFormatter(input)} must be more than ${min}`);
+    return false;
+  } else if (input.value.length > max) {
+    showError(input, `${formFormatter(input)} must be less than ${max}`);
+    return false;
+  } else {
+    showSuccess(input);
+    return true;
+  }
+}
+
+function checkIsEmailValid(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailRegex.test(email.value.trim())) {
+    console.log(emailRegex.test(email));
+    showSuccess(email);
+    return true;
+  } else {
+    console.log(emailRegex.test(email));
+    showError(email, `${formFormatter(email)} is not valid`);
+    return false;
+  }
+}
+
+function checkPasswordMatch(password1, password2) {
+  if (password.value.trim() !== password2.value.trim()) {
+    showError(password2, "Password does not match");
+    return false;
+  }
+
+  return true;
 }
 
 function formFormatter(input) {
