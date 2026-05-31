@@ -16,15 +16,26 @@ function submitForm(e) {
     confirmPassword,
   ]);
 
+  let isPassedChecks = validateForm;
+
   if (validateForm) {
-    if (
-      checkInputLength(username, 3, 15) &&
-      checkIsEmailValid(email) &&
-      checkInputLength(password, 8, 15) &&
-      checkPasswordMatch(password, confirmPassword)
-    ) {
-      alert("Form Submitted");
-    }
+    const userNameLength = checkInputLength(username, 3, 15);
+    const validEmail = checkIsEmailValid(email);
+    const passwordLength = checkInputLength(password, 8, 15);
+    const passwordMatch = checkPasswordMatch(password, confirmPassword);
+
+    isPassedChecks =
+      userNameLength && validEmail && passwordLength && passwordMatch;
+  }
+
+  if (isPassedChecks) {
+    form.reset();
+    document.querySelectorAll(".form-group").forEach((group) => {
+      group.classList.remove("success", "error");
+      group.classList.add("form-group");
+    });
+
+    alert("Form Submitted");
   }
 }
 
