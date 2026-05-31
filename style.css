@@ -43,6 +43,7 @@ form .form-group {
   flex-direction: column;
   text-align: left;
   min-height: 75px;
+  position: relative;
 }
 
 form .form-group label {
@@ -87,6 +88,19 @@ form button {
   border-radius: 4px;
   cursor: pointer;
   transition: all ease 0.3;
+}
+
+form .form-group .view-pass-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+}
+
+form .form-group .view-pass-btn img {
+  height: 20px;
+  width: 20px;
 }
 
 form button:hover {

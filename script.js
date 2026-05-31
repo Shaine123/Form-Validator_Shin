@@ -3,8 +3,17 @@ const userName = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmpassword");
+const viewBtn = document.getElementById("viewPasswordBtn");
+const viewBtn2 = document.getElementById("viewPasswordBtn2");
 
 form.addEventListener("submit", submitForm);
+
+viewBtn.addEventListener("click", () => {
+  togglePassword("password");
+});
+viewBtn2.addEventListener("click", () => {
+  togglePassword("confirmPass");
+});
 
 function submitForm(e) {
   e.preventDefault();
@@ -110,4 +119,32 @@ function checkPasswordMatch(password1, password2) {
 
 function formFormatter(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
+function togglePassword(type) {
+  if (type == "password") {
+    if (password.type === "password") {
+      password.type = "text";
+
+      document.getElementById("view").hidden = true;
+      document.getElementById("hide").hidden = false;
+    } else {
+      password.type = "password";
+
+      document.getElementById("view").hidden = false;
+      document.getElementById("hide").hidden = true;
+    }
+  } else if (type == "confirmPass") {
+    if (confirmPassword.type === "password") {
+      confirmPassword.type = "text";
+
+      document.getElementById("view").hidden = true;
+      document.getElementById("hide").hidden = false;
+    } else {
+      confirmPassword.type = "password";
+
+      document.getElementById("view").hidden = false;
+      document.getElementById("hide").hidden = true;
+    }
+  }
 }
