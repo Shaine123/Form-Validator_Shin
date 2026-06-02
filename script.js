@@ -138,13 +138,13 @@ function togglePassword(type) {
     if (confirmPassword.type === "password") {
       confirmPassword.type = "text";
 
-      document.getElementById("view").hidden = true;
-      document.getElementById("hide").hidden = false;
+      document.getElementById("view2").hidden = true;
+      document.getElementById("hide2").hidden = false;
     } else {
       confirmPassword.type = "password";
 
-      document.getElementById("view").hidden = false;
-      document.getElementById("hide").hidden = true;
+      document.getElementById("view2").hidden = false;
+      document.getElementById("hide2").hidden = true;
     }
   }
 }

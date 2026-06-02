@@ -35,7 +35,6 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2px;
 }
 
 form .form-group {
@@ -64,6 +63,7 @@ form .form-group small {
   margin-left: 5px;
   color: red;
   font-size: 12px;
+  min-height: 20px;
 }
 
 form .form-group.error input {
@@ -88,6 +88,7 @@ form button {
   border-radius: 4px;
   cursor: pointer;
   transition: all ease 0.3;
+  margin-top: 10px;
 }
 
 form .form-group .view-pass-btn {
@@ -95,7 +96,7 @@ form .form-group .view-pass-btn {
   border: none;
   position: absolute;
   right: 10px;
-  bottom: 2px;
+  bottom: 13px;
 }
 
 form .form-group .view-pass-btn img {
